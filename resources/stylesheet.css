@@ -1,0 +1,313 @@
+
+ 
+	/* Copyright 2021 Joseph Mason
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License. */ 
+
+
+.glass-parent {
+	
+	
+	--button-size: 38px;
+	--leftpane-size: 80px;
+	--atoms-popup-width: 76px;
+	--pTable-width: 696px;
+	--pTable-sblock-width: 76px;
+	--pTable-dblock-width: 380px;
+	--pTable-pblock-width: 228px;
+	--pTable-fblock-width: 532px;
+	--pTable-fblock-alignment: 82px;
+	
+	--background-colour: #6CBA7D;
+	--canvas-colour: #FFFFFF;
+	--onhover-colour: #228B3B;
+	--highlight-colour1: #FCDE9C;
+	--highlight-colour2: white;
+	--text-colour: black;
+	--bond-colour: black;
+	
+	position: relative;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: var(--background-colour, #6CBA7D);
+	user-select: none;
+}
+
+.glass-parent svg {
+	background-color:var(--background-colour, #228B3B);
+	height:var(--button-size, 40px);
+	width:var(--button-size, 40px);
+	border: 0px solid black;
+	border-radius: 5px;
+	margin: 1px 1px 1px 1px;
+}
+
+.glass-parent p {
+	color: var(--text-colour)
+}
+
+.glass-parent svg text {
+	fill:var(--text-colour, black);
+	font-family: Arial, sans-serif;
+}
+
+.glass-parent svg rect,circle,path {
+	stroke: var(--text-colour, black);
+	stroke-width: 1;
+	fill: var(--text-colour, black);
+}
+
+.glass-nofill {
+	fill: none;
+}
+
+.glass-left-buttons-pTable path:nth-child(1) {
+	fill: var(--canvas-colour, #00FFFF);
+}
+
+.glass-left-buttons-pTable path:nth-child(2) {
+	fill: var(--canvas-colour, #F5F5DC);
+}
+.glass-left-buttons-pTable path:nth-child(3) {
+	fill: var(--canvas-colour, #FF7F50);
+}
+
+.glass-parent canvas {
+	background-color: var(--canvas-colour);
+	border:1px solid black;
+	border-radius:5px;
+}
+
+.glass-hover-svg {
+	background-color:var(--onhover-colour, #228B3B) !important;
+
+}
+
+.highlight-svg {
+	background-image: linear-gradient(135deg, var(--highlight-colour1, #FCDE9C), var(--highlight-colour2, white)) !important;
+	box-shadow: -1px -1px #888888;
+}
+
+.glass-topline {
+	display: flex;
+	flex-flow: row;
+
+	margin: 2px 2px 2px 2px;
+}
+
+.glass-top-logo {
+	width:var(--leftpane-size, 100px);
+	height:var(--button-size, 32px);
+	margin: 2px 2px 2px 2px;
+}
+
+.glass-top-buttons {
+	display:flex;
+	flex-flow: row wrap;
+	align-content: center;
+	margin: 2px 2px 2px 2px;
+}
+
+.glass-secondline {
+	display:flex;
+	flex-flow:row wrap;
+	margin: 2px 2px 2px 2px;
+	align-items: flex-start;
+}
+
+.glass-left-buttons {
+	display:flex;
+	width: var(--leftpane-size, 100px);
+	margin: 2px 2px 2px 2px;
+	flex-flow: row wrap;
+	justify-content:space-between;
+	align-content: space-between;
+}
+
+
+.glass-popup {
+	display: none;
+	position: absolute;
+	z-index: 10;
+	width: 80%;
+	background-color: var(--background-colour, #6CBA7D);
+	border: 2px solid black;
+	border-radius:5px;
+	box-shadow: 2px 2px #888888;
+}
+
+.glass-popup-atoms {
+	width: var(--atoms-popup-width, 100px);
+}
+
+
+.glass-popup-atoms-content {
+	display:flex;
+	flex-flow: row wrap;
+}
+
+.glass-popup-atoms svg {
+	margin: 0px 0px 0px 0px;
+	border-radius: 0px;
+}
+
+.glass-popup-pTable {
+	width: var(--pTable-width, 692px);
+}
+
+.glass-popup-pTable svg {
+	margin: 0px 0px 0px 0px;
+}
+
+.glass-popup-pTable-content {
+	display: flex;
+	flex-flow: row wrap;
+	
+}
+
+.glass-pTable-sblock {
+	display: flex;
+	flex-flow: row wrap;
+	width: var(--pTable-sblock-width, 100px);
+	justify-content: flex-start;
+	align-content:flex-end;
+	margin: 2px 2px 2px 2px;
+}
+
+.glass-pTable-dblock {
+	display: flex;
+	flex-flow: row wrap;
+	width: var(--pTable-dblock-width, 470px);
+	justify-content: center;
+	align-content:flex-end;
+	margin: 2px 2px 2px 2px;
+}
+
+.glass-pTable-pblock {
+	display: flex;
+	flex-flow: row wrap;
+	width: var(--pTable-pblock-width, 282px);
+	align-content: flex-end;
+	justify-content: flex-end;
+	margin: 2px 2px 2px 2px;
+}
+
+.glass-pTable-fblock {
+	display: flex;
+	flex-flow: row wrap;
+	width: var(--pTable-fblock-width, 658px);
+	margin-left:var(--pTable-fblock-alignment, 111px);
+	margin-right: 2px;
+	margin-top:2px;
+	margin-bottom: 2px;
+
+}
+
+.glass-popup-nring {
+	width: 112px;
+}
+.glass-popup-nring-content {
+	margin: 5px 5px 5px 5px;
+}
+
+.glass-popup-nring-content input {
+	width:100px;
+}
+
+.glass-sketch-window {
+	margin: 2px 2px 2px 2px;
+}
+
+.glass_viewer_mode {
+	border: 1px solid black;
+	border-radius:5px;
+	background-color: white;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.glass-fullScreenDiv {
+	display:none;
+	position: fixed;
+	
+	left: 100px;
+	top: 100px;
+	z-index: 100;
+	background-color: blue;
+}
+
+.glass-button {
+	width: 100px;
+	height: 30px;
+	background-color: var(--onhover-colour, #228B3B);
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	font-weight: bold;
+	font: 15px Arial, sans-serif;
+	line-height:30px;
+	margin-top: 2px;
+}
+
+.glass-hover-button {
+	box-shadow: 2px 2px #888888;
+}
+
+.glass-popup-importexport {
+	width: 400px;
+}
+	
+
+
+.glass-popup-importexport * {
+	margin:5px;
+}
+
+.glass-popup-IE-header {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+}
+
+.glass-popup-IE-header input {
+	width: 49%;
+}
+
+.glass-popup-IE-import, .glass-popup-IE-export {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content:center;
+}
+
+.glass-popup-importexport-content>div>div,input {
+	width: 100%;
+}
+
+.glass-popup-importexport textarea {
+	width: 100%;
+	height: 100px;
+}
+
+.glass-align-center {
+	text-align: center;
+}
+
+.glass-parent-shield {
+	position: absolute;
+	z-index:99;
+	background-color: rgba(0, 0, 0, 0.3);
+
+}
