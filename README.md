@@ -43,4 +43,10 @@ To get started:
       colourScheme: "warm",
     }
     let mysketcher = new Glass("mysketcher", options)
+    
+#License
+
+Licensed under Apache 2.0 licence, see LICENSE for details.
+
+Copyright 2021 Joseph Mason
 
