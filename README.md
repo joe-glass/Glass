@@ -44,7 +44,7 @@ To get started:
     }
     let mysketcher = new Glass("mysketcher", options)
     
-#License
+**License**
 
 Licensed under Apache 2.0 licence, see LICENSE for details.
 
