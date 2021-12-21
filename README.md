@@ -7,9 +7,9 @@ This software is a Javascript based library to add a chemical drawing tool and c
   * jQuery 3.5.1 (or similar)
 
 ## Functions currently included:
-  * Import of (native) Glass format, MOL2000 and SDF files
-  * Export to (native) Glass format, MOL2000, and canonicalised SMILES
-  * The canonicalised SMILES function is designed to give a single unique SMILES string for each possible compound, regardless of how it was drawn. Point chirality and double bond isomerism is currently supported (allenes, axial and planar chirality not currently supported). 
+ * Import of (native) Glass format, MOL2000 and SDF files
+ * Export to (native) Glass format, MOL2000, and canonicalised SMILES
+ * The canonicalised SMILES function is designed to give a single unique SMILES string for each possible compound, regardless of how it was drawn. Point chirality and double bond isomerism is currently supported (allenes, axial and planar chirality not currently supported). 
  * Use of any element on the periodic table
  * Use of positively and negatively charged atoms
  * Zoom in/out 
@@ -32,6 +32,7 @@ An instance of Glass can be loaded with either the full sketcher and user tools,
     <script src="Glass/disconnect.js"></script>
     <script src="Glass/resources/layout.js"></script>
     <script src="Glass/resources/disconnections.js"></script>
+	<link rel="stylesheet" href="Glass/resources/stylesheet.css">
     
   
   Add a suitable DOM element, e.g. 
