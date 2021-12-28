@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="glass/init.js"></script>
+    <script src="glass/canvasfn.js"></script>
+    <script src="glass/fileIO.js"></script>
+    <script src="glass/disconnect.js"></script>
+    <script src="glass/resources/layout.js"></script>
+    <script src="glass/resources/disconnections.js"></script>
+    <link rel="stylesheet" href="glass/resources/stylesheet.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+   
+  </head>
+  
+  <body>
+    <div id="mysketcher"></div>
+    
+    <script>
+      let options = {
+      mode: "sketcher",
+      height: 500,
+      width: 800,
+      buttonSize: 34,
+      colourScheme: "warm",
+    } 
+
+    let mysketcher = new Glass("mysketcher", options)
+
+    </script>
+  </body>
+<html>
+    
