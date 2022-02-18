@@ -1147,7 +1147,151 @@
 			})
 		}
 		
+		
+		//This function determines the stereolabel given the centrePoints (chiral atoms/chiral centre for non-point chiral cases)
+		//and the four key adjacent points.
+		function getStereoLabel(initialstring, newstring, centrePoints, adjPoints) {
+			let stereoInfo = {}
+			let rings = that.findRings()
+			
+			//Next we need to label the points bonded to the stereogenic centre, by the order they appear in the string, or by 
+			//the order their bonds appear if the stereogenicAtom and its neighbour at part of a ring. 
+			
+			//Search for the point/points (if it exists) where it does not immediately follow nor precede the stereogenicAtom
+			//meaning that it must be part of the ring (multiple rings).
+			let ringpoints = []
+			
+			if(centrePoints.length === 1) {
+				
+				$.each(adjPoints, function(bindex, bvalue) {
+					let isAdjacent = false
+					let index1 = initialstring.PIO.indexOf(bvalue)
+					let index2 = initialstring.PIO.indexOf(stereogenicAtom)
+					if(Math.abs(index1-index2) === 1 && index1 > -1 && index2 > -1) {
+						isAdjacent = true
+					}
+					else {
+						$.each(newstring.chainRecords, function(cindex, cvalue) { 
+							let index3 = cvalue.indexOf(bvalue)
+							let index4 = cvalue.indexOf(stereogenicAtom)
+							if(index3 > -1 && index4 > -1 && Math.abs(index3-index4) === 1) {
+								isAdjacent = true
+								return false
+							}
+						})
+					}
+					//if neither of the above tests are true, this point is bonded to the stereogenic atom but is part of 
+					//a ring (i.e. not adjacent to the stereogenic atom). 
+					if(!isAdjacent) {
+						ringpoints.push(bvalue)
+					}
+						
+				})
+			}
+			
+			else if(centrePoints.length === 2) {
+				adjPoints.forEach((value, index, arr) => {
+					let isAdjacent = false
+					let index1 = initialstring.PIO.indexOf(value)
+					let index2 = initialstring.PIO.indexOf(centrePoint[0])
+					let index2 = initialstring.PIO.indexOf(centrePoint[1])
+					
+					if(Math.abs(index1-index2) == 1 && index1 > -1 && index2 > -1) {
+						isAdjacent = true
+					}
+					else if(Math.abs(index1-index3) === 1 && index1 > -1 && index3 > -1) {
+						isAdjacent = true
+					}
+					else {
+						newstring.chainRecords.forEach((bvalue, bindex, barr) => {
+							let index4 = bvalue.indexOf(value)
+							let index5 = bvalue.indexOf(centrePoint[0])
+							let index6 = bvalue.indexOf(centrePoint[1])
+							if(Math.abs(index4-index5) == 1 && index4 > -1 && index5 > -1) {
+								isAdjacent = true
+							}
+							else if(Math.abs(index4-index6) === 1 && index4 > -1 && index6 > -1) {
+								isAdjacent = true
+							}
+							
+						})
+					}
+					
+					if(!isAdjacent) {
+						ringpoints.push(bvalue)
+					}					
+				})
+			}
+			
+			
+			//Sort the array of bonded points (points[index][3]) by order they appear in string. 
+			//First, make a copy of the array of bonded points which we can then sort
+			let ranking = adjPoints.concat([])
+			
+			ranking.sort(function(a, b) {
+				//If one of the atoms is a dummy atom, make sure this goes at the very end of the ranking. 
+				if(points[a][2] === 601) {
+					return 1
+				}
+				else if(points[b][2] === 601) {
+					return -1
+				}
+				else if(ringpoints.length === 0) {
+					return newstring.string.indexOf(a) - newstring.string.indexOf(b)
+				}
+				else {
+					//If one of the bonds connecting the centrePoint with its neighbour is part of a ring, slightly modified
+					//rules apply. It is the order of the bonds to the centrePoint which determine the numbering order. 
+					if(ringpoints.includes(a) && ringpoints.includes(b)) {
+						let ringIndexA = newstring.string[newstring.string.indexOf(a)+1]
+						let ringIndexB = newstring.string[newstring.string.indexOf(b)+1]
+						
+						//There could be up to four ring points: we need to determine in which order those ring points come 
+						//after the stereogenic atoms. 
+						let ring1 = newstring.string[newstring.string.indexOf(stereogenicAtom)+1]
+						let ring2 = newstring.string[newstring.string.indexOf(stereogenicAtom)+2]
+						let ring3 = newstring.string[newstring.string.indexOf(stereogenicAtom)+3]
+						let ring4 = newstring.string[newstring.string.indexOf(stereogenicAtom)+4]
+						
+						let ringIndices = [ring1, ring2, ring3, ring4]
+						if(ringIndices.indexOf(ringIndexA) < ringIndices.indexOf(ringIndexB)) {
+							return -1
+						}
+						else {
+							return 1
+						}
+					}
+					else if(ringpoints.includes(b)) {
+						if(newstring.string.indexOf(a) < newstring.string.indexOf(stereogenicAtom)) {
+							return -1 //a should come first
+						}
+						else {
+							return 1 //b, the ringpoint, should come first
+						}
+					}
+					else if(ringpoints.includes(a)) {
+						if(newstring.string.indexOf(b) < newstring.string.indexOf(stereogenicAtom)) {
+							return 1 //b should come first
+						}
+						else {
+							return -1 //a, the ringpoint, should come first
+						}
+						
+					}
+					else { //If neither of the two points currently examined are part of the ring, then normal rules apply
+						if(newstring.string.indexOf(a) < newstring.string.indexOf(b)) {
+							return -1 //a should come first
+						}
+						
+						else {
+							return 1 //b should come first
+						}
+					}
+					
+				}
 
+			})
+		}
 		
 		function insertStereoChem(initialstring, newstring) {
 			
