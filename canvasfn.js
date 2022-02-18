@@ -304,22 +304,22 @@
 						angle = Math.abs(-Math.PI-angle)+Math.PI	
 				}
 				switch(true) {
-					case(0 < angle && angle < Math.PI/3):
+					case(0 <= angle && angle < Math.PI/3):
 						newCoords = [x+l*Math.cos(angle+2*Math.PI/3), y-l*Math.sin(angle+2*Math.PI/3)]
 					break;
-					case(Math.PI/3 < angle && angle < 2*Math.PI/3):
+					case(Math.PI/3 <= angle && angle < 2*Math.PI/3):
 						newCoords = [x+l*Math.cos(angle-2*Math.PI/3), y-l*Math.sin(angle-2*Math.PI/3)]
 					break;
-					case(2*Math.PI/3 < angle && angle < Math.PI):
+					case(2*Math.PI/3 <= angle && angle < Math.PI):
 						newCoords = [x+l*Math.cos(angle-2*Math.PI/3), y-l*Math.sin(angle-2*Math.PI/3)]
 					break;
-					case(Math.PI < angle && angle < 4*Math.PI/3):
+					case(Math.PI <= angle && angle < 4*Math.PI/3):
 						newCoords = [x+l*Math.cos(angle+2*Math.PI/3), y-l*Math.sin(angle+2*Math.PI/3)]
 					break;
-					case(4*Math.PI/3 < angle && angle < 5*Math.PI/3):
+					case(4*Math.PI/3 <= angle && angle < 5*Math.PI/3):
 						newCoords = [x+l*Math.cos(angle+2*Math.PI/3), y-l*Math.sin(angle+2*Math.PI/3)]
 					break;
-					case(5*Math.PI/3 < angle && angle < 2*Math.PI):
+					case(5*Math.PI/3 <= angle && angle <= 2*Math.PI):
 						newCoords = [x+l*Math.cos(angle-2*Math.PI/3), y-l*Math.sin(angle-2*Math.PI/3)]
 					break;
 				}

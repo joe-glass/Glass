@@ -223,7 +223,7 @@
 			that.points[value[1]][3].push(value[0])
 		})
 		
-		
+		this.fixDoubleBondPlacement()
 		if(this.options.mode !== "nocanvas") {
 			this.currentRings = this.findRings()
 			this.centreandRedraw()

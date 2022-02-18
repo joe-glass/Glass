@@ -692,15 +692,15 @@ function Glass(id, useroptions) {
 				
 			}
 			
-			$('.glass-parent').css("--button-size", newvalues.buttonSize)
-			$('.glass-parent').css("--leftpane-size", newvalues.leftpanesize)
-			$('.glass-parent').css("--atoms-popup-width", newvalues.atomsPopupWidth)
-			$('.glass-parent').css("--pTable-width", newvalues.pTableWidth)
-			$('.glass-parent').css("--pTable-sblock-width", newvalues.pTableSBlockWidth)
-			$('.glass-parent').css("--pTable-dblock-width", newvalues.pTableDBlockWidth)
-			$('.glass-parent').css("--pTable-pblock-width", newvalues.pTablePBlockWidth)
-			$('.glass-parent').css("--pTable-fblock-width", newvalues.pTableFBlockWidth)
-			$('.glass-parent').css("--pTable-fblock-alignment", newvalues.pTableFBlockAlignment)
+			$(`#${id} .glass-parent`).css("--button-size", newvalues.buttonSize)
+			$(`#${id} .glass-parent`).css("--leftpane-size", newvalues.leftpanesize)
+			$(`#${id} .glass-parent`).css("--atoms-popup-width", newvalues.atomsPopupWidth)
+			$(`#${id} .glass-parent`).css("--pTable-width", newvalues.pTableWidth)
+			$(`#${id} .glass-parent`).css("--pTable-sblock-width", newvalues.pTableSBlockWidth)
+			$(`#${id} .glass-parent`).css("--pTable-dblock-width", newvalues.pTableDBlockWidth)
+			$(`#${id} .glass-parent`).css("--pTable-pblock-width", newvalues.pTablePBlockWidth)
+			$(`#${id} .glass-parent`).css("--pTable-fblock-width", newvalues.pTableFBlockWidth)
+			$(`#${id} .glass-parent`).css("--pTable-fblock-alignment", newvalues.pTableFBlockAlignment)
 		//}
 	}
 	
@@ -708,7 +708,7 @@ function Glass(id, useroptions) {
 		let scheme = this.presetColourSchemes[this.options.colourScheme]
 		if(scheme !== undefined) {
 			$.each(scheme, function(index, value) {
-				$('.glass-parent').css(index, value)
+				$(`#${id} .glass-parent`).css(index, value)
 				if(index == "--canvas-colour") {
 					that.canvasColour = value
 				}
@@ -826,8 +826,6 @@ function Glass(id, useroptions) {
 				$(this).removeClass("glass-hover-button")
 			})
 
-		
-			//that.canvasColour = $("#"+id+"-canvas").css("background-color")
 
 			$('#'+id+' svg').click(function() {
 				//Change styling if one of the buttons on the left is clicked. 
@@ -1093,6 +1091,15 @@ function Glass(id, useroptions) {
 	this.setPresetColourScheme()	
 }
 	
+	
+	
+	
+	
+	
+	
+	
+
+
 	
 	
 	
